@@ -1,4 +1,4 @@
-package com.capgemini.candidateorganizationsystem.controller;
+package com.capgemini.candidateorganizationsystem.controllers;
 
 import com.capgemini.candidateorganizationsystem.helper.CSVHelper;
 import com.capgemini.candidateorganizationsystem.message.ResponseMessage;
