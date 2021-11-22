@@ -2,8 +2,8 @@ package com.capgemini.candidateorganizationsystem.controller;
 
 import com.capgemini.candidateorganizationsystem.helper.CSVHelper;
 import com.capgemini.candidateorganizationsystem.message.ResponseMessage;
-import com.capgemini.candidateorganizationsystem.model.Candidate;
-import com.capgemini.candidateorganizationsystem.service.CSVService;
+import com.capgemini.candidateorganizationsystem.entities.Candidate;
+import com.capgemini.candidateorganizationsystem.services.CSVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.core.io.Resource;

@@ -1,7 +1,7 @@
-package com.capgemini.candidateorganizationsystem.service;
+package com.capgemini.candidateorganizationsystem.services;
 import com.capgemini.candidateorganizationsystem.helper.CSVHelper;
-import com.capgemini.candidateorganizationsystem.model.Candidate;
-import com.capgemini.candidateorganizationsystem.repository.CandidateRepository;
+import com.capgemini.candidateorganizationsystem.entities.Candidate;
+import com.capgemini.candidateorganizationsystem.repositories.CandidateRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;

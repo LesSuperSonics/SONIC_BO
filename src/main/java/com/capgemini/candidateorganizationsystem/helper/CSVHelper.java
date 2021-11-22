@@ -1,7 +1,7 @@
 package com.capgemini.candidateorganizationsystem.helper;
 
 
-import com.capgemini.candidateorganizationsystem.model.Candidate;
+import com.capgemini.candidateorganizationsystem.entities.Candidate;
 import org.apache.commons.csv.*;
 import org.springframework.web.multipart.MultipartFile;
 

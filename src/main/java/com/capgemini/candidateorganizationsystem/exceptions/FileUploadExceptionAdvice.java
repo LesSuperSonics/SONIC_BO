@@ -1,4 +1,4 @@
-package com.capgemini.candidateorganizationsystem.exception;
+package com.capgemini.candidateorganizationsystem.exceptions;
 
 import com.capgemini.candidateorganizationsystem.message.ResponseMessage;
 import org.springframework.http.HttpStatus;

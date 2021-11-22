@@ -1,4 +1,4 @@
-package com.capgemini.candidateorganizationsystem.model;
+package com.capgemini.candidateorganizationsystem.entities;
 
 import javax.persistence.*;
 
