@@ -1,12 +1,16 @@
 package com.capgemini.candidateorganizationsystem.entities;
 
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "candidates")
-public class Candidate {
+@EntityListeners(AuditingEntityListener.class)
+public class CandidateEntity {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -34,13 +38,18 @@ public class Candidate {
   @Column(name = "profile")
   private String profile;
 
-  //ajouter createdDate 
+  @CreatedDate
+  private Date createdDate;
 
-  public Candidate() {
+  @ManyToOne
+  @JoinColumn(name = "users_id")
+  private UserEntity user;
+
+  public CandidateEntity() {
 
   }
 
-  public Candidate(String firstName, String lastName, String phoneNumber, String mailAddress, String address, int expDuration, String profile) {
+  public CandidateEntity(String firstName, String lastName, String phoneNumber, String mailAddress, String address, int expDuration, String profile) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
@@ -48,6 +57,22 @@ public class Candidate {
     this.address = address;
     this.expDuration = expDuration;
     this.profile = profile;
+  }
+
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+  }
+
+  public UserEntity getUser() {
+    return user;
+  }
+
+  public void setUser(UserEntity user) {
+    this.user = user;
   }
 
   public long getId() {
@@ -116,7 +141,7 @@ public class Candidate {
 
   @Override
   public String toString() {
-    return "Candidate{" +
+    return "CandidateEntity{" +
             "id=" + id +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
