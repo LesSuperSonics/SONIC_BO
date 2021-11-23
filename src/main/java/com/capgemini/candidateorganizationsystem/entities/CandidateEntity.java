@@ -26,8 +26,8 @@ public class CandidateEntity {
   @Column(name = "phoneNumber")
   private String phoneNumber;
 
-  @Column(name = "mailAddress")
-  private String mailAddress;
+  @Column(name = "email",nullable = false, length = 120, unique = true)
+  private String email;
 
   @Column(name = "address")
   private String address;
@@ -39,7 +39,12 @@ public class CandidateEntity {
   private String profile;
 
   @CreatedDate
+  @Column(name = "createdDate")
   private Date createdDate;
+
+  @Column(length = 32, columnDefinition = "varchar(32) default 'CURRENT'")
+  @Enumerated(value = EnumType.STRING)
+  private CandidateStatus status = CandidateStatus.CURRENT;
 
   @ManyToOne
   @JoinColumn(name = "users_id")
@@ -49,29 +54,27 @@ public class CandidateEntity {
 
   }
 
-  public CandidateEntity(String firstName, String lastName, String phoneNumber, String mailAddress, String address, int expDuration, String profile) {
+  public CandidateEntity(String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile) {
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
-    this.mailAddress = mailAddress;
+    this.email = email;
     this.address = address;
     this.expDuration = expDuration;
     this.profile = profile;
   }
 
-  public Date getCreatedDate() {
-    return createdDate;
-  }
-
-  public void setCreatedDate(Date createdDate) {
+  public CandidateEntity(long id, String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile, Date createdDate, CandidateStatus status, UserEntity user) {
+    this.id = id;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.address = address;
+    this.expDuration = expDuration;
+    this.profile = profile;
     this.createdDate = createdDate;
-  }
-
-  public UserEntity getUser() {
-    return user;
-  }
-
-  public void setUser(UserEntity user) {
+    this.status = status;
     this.user = user;
   }
 
@@ -107,12 +110,12 @@ public class CandidateEntity {
     this.phoneNumber = phoneNumber;
   }
 
-  public String getMailAddress() {
-    return mailAddress;
+  public String getEmail() {
+    return email;
   }
 
-  public void setMailAddress(String mailAddress) {
-    this.mailAddress = mailAddress;
+  public void setEmail(String email) {
+    this.email = email;
   }
 
   public String getAddress() {
@@ -139,17 +142,27 @@ public class CandidateEntity {
     this.profile = profile;
   }
 
-  @Override
-  public String toString() {
-    return "CandidateEntity{" +
-            "id=" + id +
-            ", firstName='" + firstName + '\'' +
-            ", lastName='" + lastName + '\'' +
-            ", phoneNumber='" + phoneNumber + '\'' +
-            ", mailAddress='" + mailAddress + '\'' +
-            ", address='" + address + '\'' +
-            ", expDuration=" + expDuration +
-            ", profile='" + profile + '\'' +
-            '}';
+  public Date getCreatedDate() {
+    return createdDate;
+  }
+
+  public void setCreatedDate(Date createdDate) {
+    this.createdDate = createdDate;
+  }
+
+  public CandidateStatus getStatus() {
+    return status;
+  }
+
+  public void setStatus(CandidateStatus status) {
+    this.status = status;
+  }
+
+  public UserEntity getUser() {
+    return user;
+  }
+
+  public void setUser(UserEntity user) {
+    this.user = user;
   }
 }
