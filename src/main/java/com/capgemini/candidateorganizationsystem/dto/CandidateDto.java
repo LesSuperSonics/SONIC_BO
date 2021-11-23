@@ -1,5 +1,7 @@
 package com.capgemini.candidateorganizationsystem.dto;
 
+import com.capgemini.candidateorganizationsystem.entities.CandidateStatus;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -9,11 +11,12 @@ public class CandidateDto implements Serializable {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String mailAddress;
+    private String email;
     private String address;
     private int expDuration;
     private String profile;
     private Date createdDate;
+    private CandidateStatus status;
 
     public long getId() {
         return id;
@@ -47,12 +50,12 @@ public class CandidateDto implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getMailAddress() {
-        return mailAddress;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMailAddress(String mailAddress) {
-        this.mailAddress = mailAddress;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getAddress() {
@@ -85,5 +88,13 @@ public class CandidateDto implements Serializable {
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public CandidateStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(CandidateStatus status) {
+        this.status = status;
     }
 }
