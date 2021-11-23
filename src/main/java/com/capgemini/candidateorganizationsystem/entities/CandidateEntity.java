@@ -165,4 +165,21 @@ public class CandidateEntity {
   public void setUser(UserEntity user) {
     this.user = user;
   }
+
+  @Override
+  public String toString() {
+    return "CandidateEntity{" +
+            "id=" + id +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", phoneNumber='" + phoneNumber + '\'' +
+            ", email='" + email + '\'' +
+            ", address='" + address + '\'' +
+            ", expDuration=" + expDuration +
+            ", profile='" + profile + '\'' +
+            ", createdDate=" + createdDate +
+            ", status=" + status +
+            ", user=" + user +
+            '}';
+  }
 }
