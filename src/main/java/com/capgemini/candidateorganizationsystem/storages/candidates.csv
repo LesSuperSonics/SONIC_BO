@@ -1,4 +1,4 @@
-﻿id,firstName,lastName,phoneNumber,mailAddress,address,expDuration,profile
+﻿id,firstName,lastName,phoneNumber,email,address,expDuration,profile
 1,Younes,OUFRID,6413458530,oufridyounes@gmail.com,Appt 233 Imm 20 Temara Maroc,12,Java Angular FullStack
 2,Ilyas,AGRAOU,6879874530,ilyasagraou@gmail.com, 45 avenue Med 5 Rabat Maroc,12,Java Angular FullStack
 3,Zakaria,CHAFIK,6216318530,zakariachafik@gmail.com,51 Guich el oudaya Temara Maroc,24,Java Angular FullStack
