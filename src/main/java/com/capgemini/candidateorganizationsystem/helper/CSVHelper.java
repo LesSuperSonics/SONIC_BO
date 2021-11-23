@@ -1,7 +1,7 @@
 package com.capgemini.candidateorganizationsystem.helper;
 
 
-import com.capgemini.candidateorganizationsystem.entities.Candidate;
+import com.capgemini.candidateorganizationsystem.entities.CandidateEntity;
 import org.apache.commons.csv.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,17 +23,17 @@ public class CSVHelper {
     return true;
   }
 
-  public static List<Candidate> csvToCandidates(InputStream is) {
+  public static List<CandidateEntity> csvToCandidates(InputStream is) {
     try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
         CSVParser csvParser = new CSVParser(fileReader,
             CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim());) {
 
-      List<Candidate> candidates = new ArrayList<Candidate>();
+      List<CandidateEntity> candidates = new ArrayList<CandidateEntity>();
 
       Iterable<CSVRecord> csvRecords = csvParser.getRecords();
 
       for (CSVRecord csvRecord : csvRecords) {
-        Candidate candidate = new Candidate(
+        CandidateEntity candidate = new CandidateEntity(
               csvRecord.get("firstName"),
               csvRecord.get("lastName"),
                 csvRecord.get("phoneNumber"),
@@ -52,12 +52,12 @@ public class CSVHelper {
     }
   }
 
-  public static ByteArrayInputStream CandidatesToCSV(List<Candidate> candidates) {
+  public static ByteArrayInputStream CandidatesToCSV(List<CandidateEntity> candidates) {
     final CSVFormat format = CSVFormat.DEFAULT.withQuoteMode(QuoteMode.MINIMAL);
 
     try (ByteArrayOutputStream out = new ByteArrayOutputStream();
         CSVPrinter csvPrinter = new CSVPrinter(new PrintWriter(out), format);) {
-      for (Candidate candidate : candidates) {
+      for (CandidateEntity candidate : candidates) {
         List<String> data = Arrays.asList(
               String.valueOf(candidate.getId()),
                 candidate.getFirstName(),

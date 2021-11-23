@@ -1,7 +1,7 @@
 package com.capgemini.candidateorganizationsystem.repositories;
 
-import com.capgemini.candidateorganizationsystem.entities.Candidate;
+import com.capgemini.candidateorganizationsystem.entities.CandidateEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+public interface CandidateRepository extends JpaRepository<CandidateEntity, Long> {
 }

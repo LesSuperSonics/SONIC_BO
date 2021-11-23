@@ -1,8 +1,8 @@
 package com.capgemini.candidateorganizationsystem.controllers;
 
+import com.capgemini.candidateorganizationsystem.entities.CandidateEntity;
 import com.capgemini.candidateorganizationsystem.helper.CSVHelper;
 import com.capgemini.candidateorganizationsystem.message.ResponseMessage;
-import com.capgemini.candidateorganizationsystem.entities.Candidate;
 import com.capgemini.candidateorganizationsystem.services.CSVService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
@@ -46,9 +46,9 @@ public class CSVController {
   }
 
   @GetMapping("/candidates")
-  public ResponseEntity<List<Candidate>> getAllCandidates() {
+  public ResponseEntity<List<CandidateEntity>> getAllCandidates() {
     try {
-      List<Candidate> candidates = fileService.getAllCandidates();
+      List<CandidateEntity> candidates = fileService.getAllCandidates();
 
       if (candidates.isEmpty()) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
