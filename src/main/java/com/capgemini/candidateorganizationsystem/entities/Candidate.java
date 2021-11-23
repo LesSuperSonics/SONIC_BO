@@ -1,5 +1,7 @@
 package com.capgemini.candidateorganizationsystem.entities;
 
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 
 @Entity
@@ -31,6 +33,8 @@ public class Candidate {
 
   @Column(name = "profile")
   private String profile;
+
+  //ajouter createdDate 
 
   public Candidate() {
 
