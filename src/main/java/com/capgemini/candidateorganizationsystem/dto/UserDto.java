@@ -1,6 +1,7 @@
 package com.capgemini.candidateorganizationsystem.dto;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class UserDto implements Serializable {
 
@@ -10,8 +11,15 @@ public class UserDto implements Serializable {
     private String email;
     private String password;
     private String encryptedPassword;
+    private Date createdDate;
 
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
     public long getId() {
         return id;
     }

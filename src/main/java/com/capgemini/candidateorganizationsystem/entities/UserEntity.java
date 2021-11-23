@@ -1,11 +1,12 @@
 package com.capgemini.candidateorganizationsystem.entities;
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.data.annotation.CreatedDate;
+
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 
 @Entity(name = "users")
@@ -27,6 +28,27 @@ public class UserEntity implements Serializable {
     @Column(nullable = false)
     private String encryptedPassword;
 
+    @CreatedDate
+    private Date createdDate;
+
+    @OneToMany(mappedBy = "user")
+    private List<CandidateEntity> candidates;
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
+    public List<CandidateEntity> getCandidates() {
+        return candidates;
+    }
+
+    public void setCandidates(List<CandidateEntity> candidates) {
+        this.candidates = candidates;
+    }
 
     public long getId() {
         return id;
