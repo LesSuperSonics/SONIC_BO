@@ -28,7 +28,7 @@ public class CandidateController {
         return new ResponseEntity<>(candidateRepository.findAll(Specification.where(specs)), HttpStatus.OK);
     }
 
-    // The search feature - All search candidates requests are implemented by this route ^^
+    // To find a list of candidates by status enum ACCEPTED,CURRENT,REJECTED
     @GetMapping("/findByStatus/{status}")
     public ResponseEntity<List<CandidateEntity>> searchForCandidatesStatus(@PathVariable("status") CandidateStatus status) {
         return new ResponseEntity<>(candidateRepository.findByStatus(status), HttpStatus.OK);
