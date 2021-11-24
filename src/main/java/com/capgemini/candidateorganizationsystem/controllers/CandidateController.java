@@ -7,14 +7,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("http://localhost:8081")
-@Controller
+@CrossOrigin("http://localhost:8080")
+@RestController
 @RequestMapping("/api/candidates")
 public class CandidateController {
     private final CandidateRepository candidateRepository;
@@ -23,8 +21,37 @@ public class CandidateController {
         this.candidateRepository = candidateRepository;
     }
 
-    @GetMapping("/candidates")
+    // The search feature - All search candidates requests are implemented by this route ^^
+    @GetMapping("")
     public ResponseEntity<List<CandidateEntity>> searchForCandidates(@SearchSpec Specification<CandidateEntity> specs) {
         return new ResponseEntity<>(candidateRepository.findAll(Specification.where(specs)), HttpStatus.OK);
+    }
+
+    @PostMapping("")
+    @ResponseStatus(code = HttpStatus.OK, reason = "OK")
+    CandidateEntity newCandidate(@RequestBody CandidateEntity newCandidate) {
+        return candidateRepository.save(newCandidate);
+    }
+
+    // To pass the status of a candidate to ACCEPTED || REJECTED
+    @PutMapping("candidate/changeStatus/{id}")
+    @ResponseStatus(code = HttpStatus.OK, reason = "OK")
+    CandidateEntity AcceptCandidate(@RequestBody CandidateEntity newCandidateEmployee, @PathVariable Long id) {
+
+        return candidateRepository.findById(id)
+                .map(CandidateEntity -> {
+                    CandidateEntity.setStatus(newCandidateEmployee.getStatus());
+                    return candidateRepository.save(CandidateEntity);
+                })
+                .orElseGet(() -> {
+                    newCandidateEmployee.setId(id);
+                    return candidateRepository.save(newCandidateEmployee);
+                });
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(code = HttpStatus.OK, reason = "OK")
+    void deleteCandidate(@PathVariable Long id) {
+        candidateRepository.deleteById(id);
     }
 }
