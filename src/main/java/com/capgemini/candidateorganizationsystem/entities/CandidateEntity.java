@@ -1,5 +1,7 @@
 package com.capgemini.candidateorganizationsystem.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,6 +18,12 @@ public class CandidateEntity {
   @GeneratedValue(strategy = GenerationType.AUTO)
   @Column(name = "id")
   private long id;
+
+  @Column(name = "cin",nullable = false)
+  private String cin;
+
+  @Column(name = "passportId")
+  private String passportId;
 
   @Column(name = "firstName")
   private String firstName;
@@ -38,6 +46,11 @@ public class CandidateEntity {
   @Column(name = "profile")
   private String profile;
 
+  @Column(name = "receivedDate")
+  @JsonProperty("receivedDate")
+  @JsonFormat(pattern="dd/MM/YYYY")
+  private Date receivedDate;
+
   @CreatedDate
   @Column(name = "createdDate")
   private Date createdDate;
@@ -54,7 +67,9 @@ public class CandidateEntity {
 
   }
 
-  public CandidateEntity(String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile) {
+  public CandidateEntity(String cin, String passportId, String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile, Date receivedDate) {
+    this.cin = cin;
+    this.passportId = passportId;
     this.firstName = firstName;
     this.lastName = lastName;
     this.phoneNumber = phoneNumber;
@@ -62,6 +77,7 @@ public class CandidateEntity {
     this.address = address;
     this.expDuration = expDuration;
     this.profile = profile;
+    this.receivedDate = receivedDate;
   }
 
   public CandidateEntity(long id, String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile, Date createdDate, CandidateStatus status, UserEntity user) {
@@ -84,6 +100,30 @@ public class CandidateEntity {
 
   public void setId(long id) {
     this.id = id;
+  }
+
+  public String getCin() {
+    return cin;
+  }
+
+  public void setCin(String cin) {
+    this.cin = cin;
+  }
+
+  public String getPassportId() {
+    return passportId;
+  }
+
+  public void setPassportId(String passportId) {
+    this.passportId = passportId;
+  }
+
+  public Date getReceivedDate() {
+    return receivedDate;
+  }
+
+  public void setReceivedDate(Date receivedDate) {
+    this.receivedDate = receivedDate;
   }
 
   public String getFirstName() {
@@ -170,6 +210,8 @@ public class CandidateEntity {
   public String toString() {
     return "CandidateEntity{" +
             "id=" + id +
+            ", cin='" + cin + '\'' +
+            ", passportId='" + passportId + '\'' +
             ", firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", phoneNumber='" + phoneNumber + '\'' +
@@ -177,6 +219,7 @@ public class CandidateEntity {
             ", address='" + address + '\'' +
             ", expDuration=" + expDuration +
             ", profile='" + profile + '\'' +
+            ", receivedDate=" + receivedDate +
             ", createdDate=" + createdDate +
             ", status=" + status +
             ", user=" + user +
