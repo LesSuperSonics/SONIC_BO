@@ -98,7 +98,7 @@
 		<dependency>
 			<groupId>com.sipios</groupId>
 			<artifactId>spring-search</artifactId>
-			<version>0.2.0</version>
+			<version>0.2.4</version>
 		</dependency>
 	</dependencies>
 
