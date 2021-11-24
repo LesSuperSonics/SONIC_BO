@@ -34,7 +34,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilter(getAuthenticationFilter())
                 .addFilter(new AuthorizationFilter(authenticationManager()))
-                .sessionManagement()
+                .sessionManagement()// pour gerer les sessions
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
 
