@@ -42,7 +42,7 @@ public class CandidateEntity {
   @Column(name = "createdDate")
   private Date createdDate;
 
-  @Column(length = 32, columnDefinition = "varchar(32) default 'CURRENT'")
+  @Column(name="status",length = 32, columnDefinition = "varchar(32) default 'CURRENT'")
   @Enumerated(value = EnumType.STRING)
   private CandidateStatus status = CandidateStatus.CURRENT;
 

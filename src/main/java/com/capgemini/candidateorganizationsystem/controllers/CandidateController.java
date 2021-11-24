@@ -1,6 +1,7 @@
 package com.capgemini.candidateorganizationsystem.controllers;
 
 import com.capgemini.candidateorganizationsystem.entities.CandidateEntity;
+import com.capgemini.candidateorganizationsystem.entities.CandidateStatus;
 import com.capgemini.candidateorganizationsystem.repositories.CandidateRepository;
 import com.sipios.springsearch.anotation.SearchSpec;
 import org.springframework.data.jpa.domain.Specification;
@@ -25,6 +26,12 @@ public class CandidateController {
     @GetMapping("")
     public ResponseEntity<List<CandidateEntity>> searchForCandidates(@SearchSpec Specification<CandidateEntity> specs) {
         return new ResponseEntity<>(candidateRepository.findAll(Specification.where(specs)), HttpStatus.OK);
+    }
+
+    // The search feature - All search candidates requests are implemented by this route ^^
+    @GetMapping("/findByStatus/{status}")
+    public ResponseEntity<List<CandidateEntity>> searchForCandidatesStatus(@PathVariable("status") CandidateStatus status) {
+        return new ResponseEntity<>(candidateRepository.findByStatus(status), HttpStatus.OK);
     }
 
     @PostMapping("")
