@@ -33,6 +33,24 @@ public class CandidateController {
         return new ResponseEntity<>(candidateRepository.findByStatus(status), HttpStatus.OK);
     }
 
+    // To find FullStack candidates order by received date
+    @GetMapping("/findFullStacks")
+    public ResponseEntity<List<CandidateEntity>> searchForCandidatesFullStack() {
+        return new ResponseEntity<>(candidateRepository.findAllFullStackCandidatesNative(), HttpStatus.OK);
+    }
+
+    // To find Testing candidates order by received date
+    @GetMapping("/findTestings")
+    public ResponseEntity<List<CandidateEntity>> searchForCandidatesTesting() {
+        return new ResponseEntity<>(candidateRepository.findAllTestingCandidatesNative(), HttpStatus.OK);
+    }
+
+    // To find SalesForce candidates order by received date
+    @GetMapping("/findSalesForces")
+    public ResponseEntity<List<CandidateEntity>> searchForCandidatesSalesForce() {
+        return new ResponseEntity<>(candidateRepository.findAllSalesForceCandidatesNative(), HttpStatus.OK);
+    }
+
     @PostMapping("")
     @ResponseStatus(code = HttpStatus.OK, reason = "OK")
     CandidateEntity newCandidate(@RequestBody CandidateEntity newCandidate) {
