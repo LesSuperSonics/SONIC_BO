@@ -25,4 +25,32 @@ public interface CandidateRepository extends JpaRepository<CandidateEntity, Long
             nativeQuery = true)
     List<CandidateEntity> findAllSalesForceCandidatesNative();
 
+    // Dashboard needed values , JPQL Requesting
+
+    // Profiles
+    @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.profile = 'FullStack'",
+            nativeQuery = true)
+    Long CalculateFullStackCandidatesNative();
+
+    @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.profile = 'Testing'",
+            nativeQuery = true)
+    Long CalculateTestingCandidatesNative();
+
+    @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.profile = 'SalesForce'",
+            nativeQuery = true)
+    Long CalculateSalesForceCandidatesNative();
+
+    // Status
+    @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.status = 'CURRENT'",
+            nativeQuery = true)
+    Long CalculateCurrentCandidatesNative();
+
+    @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.status = 'ACCEPTED'",
+            nativeQuery = true)
+    Long CalculateAcceptedCandidatesNative();
+
+    @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.status = 'REJECTED'",
+            nativeQuery = true)
+    Long CalculateRejectedCandidatesNative();
+
 }

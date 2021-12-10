@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin("http://localhost:8080")
 @RestController
@@ -78,4 +80,55 @@ public class CandidateController {
     void deleteCandidate(@PathVariable Long id) {
         candidateRepository.deleteById(id);
     }
+
+    // Dashboard Needed routes
+
+    // Profiles
+    @GetMapping("/fullstackCount")
+    public ResponseEntity<Object> FullStackCount() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Long FullStackCount = candidateRepository.CalculateFullStackCandidatesNative();
+        map.put("Total_FullStack", FullStackCount);
+        return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }
+    @GetMapping("/testingCount")
+    public ResponseEntity<Object> TestingCount() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Long TestingCount = candidateRepository.CalculateTestingCandidatesNative();
+        map.put("Total_Testing", TestingCount);
+        return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }
+    @GetMapping("/salesforceCount")
+    public ResponseEntity<Object> SalesForceCount() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Long SalesForceCount = candidateRepository.CalculateSalesForceCandidatesNative();
+        map.put("Total_SalesForce", SalesForceCount);
+        return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }
+
+    // Status
+    @GetMapping("/CurrentStatusCount")
+    public ResponseEntity<Object> CurrentCount() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Long CurrentCount = candidateRepository.CalculateCurrentCandidatesNative();
+        map.put("Total_Current", CurrentCount);
+        return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }
+
+    @GetMapping("/AcceptedStatusCount")
+    public ResponseEntity<Object> AcceptedCount() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Long AcceptedCount = candidateRepository.CalculateAcceptedCandidatesNative();
+        map.put("Total_Accepted", AcceptedCount);
+        return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }
+
+    @GetMapping("/RejectedStatusCount")
+    public ResponseEntity<Object> RejectedCount() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        Long RejectedCount = candidateRepository.CalculateRejectedCandidatesNative();
+        map.put("Total_Rejected", RejectedCount);
+        return new ResponseEntity<Object>(map,HttpStatus.OK);
+    }
+
 }
