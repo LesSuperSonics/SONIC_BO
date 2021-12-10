@@ -157,4 +157,13 @@ public class CandidateController {
         map.put("Data", barChart);
         return new ResponseEntity<List<Object[]>>(barChart, HttpStatus.OK);
     }
+    // TimeLine candidates Chart
+    // Count Candidates by Years
+    @GetMapping("/CandidatesByYearsTimeLineChart")
+    public ResponseEntity<List<Object[]>> CandidatesCountByYearsTimeLineChart() {
+        Map<String, List<Object[]>> map = new HashMap<>();
+        List<Object[]> TimeLineChart = candidateRepository.CandidatesCountByYearsTimeLineChart();
+        map.put("Data", TimeLineChart);
+        return new ResponseEntity<List<Object[]>>(TimeLineChart, HttpStatus.OK);
+    }
 }

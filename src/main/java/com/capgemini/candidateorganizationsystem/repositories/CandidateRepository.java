@@ -26,7 +26,7 @@ public interface CandidateRepository extends JpaRepository<CandidateEntity, Long
     List<CandidateEntity> findAllSalesForceCandidatesNative();
 
     // Dashboard needed values , JPQL Requesting
-
+    // JPQL Queries used in Pie Chart &  Donut Chart
     // Profiles
     @Query(value = "SELECT COUNT(c.id) FROM candidates c WHERE c.profile = 'FullStack'",
             nativeQuery = true)
@@ -81,4 +81,14 @@ public interface CandidateRepository extends JpaRepository<CandidateEntity, Long
             "order by yyyy;",
             nativeQuery = true)
     List<Object[]> SalesForceCountByYearsBarChart();
+
+    // TimeLine candidates Chart
+    // Count Candidates by Years
+    @Query(value = "select year(received_date) as yyyy,count(*)\n" +
+            "from candidates\n" +
+            "group by year(received_date)\n" +
+            "order by yyyy;",
+            nativeQuery = true)
+    List<Object[]> CandidatesCountByYearsTimeLineChart();
+
 }
