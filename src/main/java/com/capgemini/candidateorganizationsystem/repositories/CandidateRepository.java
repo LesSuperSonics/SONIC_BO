@@ -53,4 +53,32 @@ public interface CandidateRepository extends JpaRepository<CandidateEntity, Long
             nativeQuery = true)
     Long CalculateRejectedCandidatesNative();
 
+    // Charts
+    // Bar Chart candidates count of each profile by Years
+    // Count FullStack by Years
+    @Query(value = "select year(received_date) as yyyy,count(*)\n" +
+            "from candidates\n" +
+            "where profile='FullStack'\n" +
+            "group by year(received_date)\n" +
+            "order by yyyy;",
+            nativeQuery = true)
+    List<Object[]> FullStackCountByYearsBarChart();
+
+    // Count Testing by Years
+    @Query(value = "select year(received_date) as yyyy,count(*)\n" +
+            "from candidates\n" +
+            "where profile='Testing'\n" +
+            "group by year(received_date)\n" +
+            "order by yyyy;",
+            nativeQuery = true)
+    List<Object[]> TestingCountByYearsBarChart();
+
+    // Count SalesForce by Years
+    @Query(value = "select year(received_date) as yyyy,count(*)\n" +
+            "from candidates\n" +
+            "where profile='SalesForce'\n" +
+            "group by year(received_date)\n" +
+            "order by yyyy;",
+            nativeQuery = true)
+    List<Object[]> SalesForceCountByYearsBarChart();
 }

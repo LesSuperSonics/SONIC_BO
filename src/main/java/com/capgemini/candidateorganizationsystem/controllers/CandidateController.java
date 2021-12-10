@@ -131,4 +131,30 @@ public class CandidateController {
         return new ResponseEntity<Object>(map,HttpStatus.OK);
     }
 
+    // Charts
+    // Bar Chart candidates count of each profile by Years
+    // Count FullStack by Years
+    @GetMapping("/FullStackByYearsBarChart")
+    public ResponseEntity<List<Object[]>> FullStackByYearsBarChart() {
+        Map<String, List<Object[]>> map = new HashMap<>();
+         List<Object[]> barChart = candidateRepository.FullStackCountByYearsBarChart();
+        map.put("Data", barChart);
+        return new ResponseEntity<List<Object[]>>(barChart, HttpStatus.OK);
+    }
+    // Count Testing by Years
+    @GetMapping("/TestingByYearsBarChart")
+    public ResponseEntity<List<Object[]>> TestingByYearsBarChart() {
+        Map<String, List<Object[]>> map = new HashMap<>();
+        List<Object[]> barChart = candidateRepository.TestingCountByYearsBarChart();
+        map.put("Data", barChart);
+        return new ResponseEntity<List<Object[]>>(barChart, HttpStatus.OK);
+    }
+    // Count SalesForce by Years
+    @GetMapping("/SalesForceByYearsBarChart")
+    public ResponseEntity<List<Object[]>> SalesForceByYearsBarChart() {
+        Map<String, List<Object[]>> map = new HashMap<>();
+        List<Object[]> barChart = candidateRepository.SalesForceCountByYearsBarChart();
+        map.put("Data", barChart);
+        return new ResponseEntity<List<Object[]>>(barChart, HttpStatus.OK);
+    }
 }
