@@ -35,6 +35,18 @@ public class CandidateController {
         return new ResponseEntity<>(candidateRepository.findByStatus(status), HttpStatus.OK);
     }
 
+    // To find a list of candidates by CIN
+    @GetMapping("/{cin}")
+    public ResponseEntity<List<CandidateEntity>> searchForCandidatesWithCIN(@PathVariable("cin") String cin) {
+        return new ResponseEntity<>(candidateRepository.findByCin(cin), HttpStatus.OK);
+    }
+
+    // To find a list of candidates by passportId
+    @GetMapping("/{passportid}")
+    public ResponseEntity<List<CandidateEntity>> searchForCandidatesWithPassportId(@PathVariable("passportid") String passportid) {
+        return new ResponseEntity<>(candidateRepository.findByPassportId(passportid), HttpStatus.OK);
+    }
+
     // To find FullStack candidates order by received date
     @GetMapping("/findFullStacks")
     public ResponseEntity<List<CandidateEntity>> searchForCandidatesFullStack() {

@@ -2,7 +2,9 @@ package com.capgemini.candidateorganizationsystem.helper;
 
 
 import com.capgemini.candidateorganizationsystem.entities.CandidateEntity;
+import com.capgemini.candidateorganizationsystem.repositories.CandidateRepository;
 import org.apache.commons.csv.*;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
@@ -12,10 +14,16 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.capgemini.candidateorganizationsystem.utils.DatesConversion;
-
+@Controller
 public class CSVHelper {
+
+    private static CandidateRepository candidateRepository;
     public static String TYPE = "text/csv";
     static String[] HEADERs = {"id", "cin", "passportId", "firstName", "lastName", "phoneNumber", "email", "address", "expDuration", "profile", "receivedDate"};
+
+    public CSVHelper(CandidateRepository candidateRepository) {
+        this.candidateRepository = candidateRepository;
+    }
 
     public static boolean hasCSVFormat(MultipartFile file) {
 
@@ -48,8 +56,13 @@ public class CSVHelper {
                         csvRecord.get("profile"),
                         DatesConversion.getDateFromString(csvRecord.get("receivedDate"))
                 );
+                if(candidateRepository.findByCin(candidate.getCin()).isEmpty() || candidateRepository.findByPassportId(candidate.getPassportId()).isEmpty()){
+                    candidates.add(candidate);
+                }else{
+                    System.out.println("Jumping a candidate !!");
+                    continue;
+                }
 
-                candidates.add(candidate);
             }
 
             return candidates;

@@ -13,6 +13,11 @@ public interface CandidateRepository extends JpaRepository<CandidateEntity, Long
 
     public List<CandidateEntity> findByStatus(CandidateStatus status);
 
+    public List<CandidateEntity> findByCin(String cin);
+
+    public List<CandidateEntity> findByPassportId(String passportId);
+
+
     @Query(value = "SELECT * FROM candidates c WHERE c.profile = 'FullStack' order by c.received_date",
             nativeQuery = true)
     List<CandidateEntity> findAllFullStackCandidatesNative();
