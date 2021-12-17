@@ -29,7 +29,7 @@ public class CSVController {
   public ResponseEntity<ResponseMessage> uploadFile(@RequestParam("file") MultipartFile file) {
     String message = "";
 
-    if (CSVHelper.hasCSVFormat(file)) {
+    //if (CSVHelper.hasCSVFormat(file)) {
       try {
         fileService.save(file);
 
@@ -41,9 +41,9 @@ public class CSVController {
       }
     }
 
-    message = "Please upload a csv file!";
-    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
-  }
+   // message = "Please upload a csv file!";
+    // return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ResponseMessage(message));
+  //}
 
   @GetMapping("/candidates")
   public ResponseEntity<List<CandidateEntity>> getAllCandidates() {
