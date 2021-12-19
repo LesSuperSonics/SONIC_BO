@@ -2,6 +2,7 @@ package com.capgemini.candidateorganizationsystem.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Builder;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "candidates")
+@Builder
 @EntityListeners(AuditingEntityListener.class)
 public class CandidateEntity {
 
@@ -80,6 +82,20 @@ public class CandidateEntity {
     this.receivedDate = receivedDate;
   }
 
+  public CandidateEntity(long id, String cin, String passportId, String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile, Date receivedDate) {
+    this.id = id;
+    this.cin = cin;
+    this.passportId = passportId;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.address = address;
+    this.expDuration = expDuration;
+    this.profile = profile;
+    this.receivedDate = receivedDate;
+  }
+
   public CandidateEntity(long id, String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile, Date createdDate, CandidateStatus status, UserEntity user) {
     this.id = id;
     this.firstName = firstName;
@@ -89,6 +105,23 @@ public class CandidateEntity {
     this.address = address;
     this.expDuration = expDuration;
     this.profile = profile;
+    this.createdDate = createdDate;
+    this.status = status;
+    this.user = user;
+  }
+
+  public CandidateEntity(long id, String cin, String passportId, String firstName, String lastName, String phoneNumber, String email, String address, int expDuration, String profile, Date receivedDate, Date createdDate, CandidateStatus status, UserEntity user) {
+    this.id = id;
+    this.cin = cin;
+    this.passportId = passportId;
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.phoneNumber = phoneNumber;
+    this.email = email;
+    this.address = address;
+    this.expDuration = expDuration;
+    this.profile = profile;
+    this.receivedDate = receivedDate;
     this.createdDate = createdDate;
     this.status = status;
     this.user = user;

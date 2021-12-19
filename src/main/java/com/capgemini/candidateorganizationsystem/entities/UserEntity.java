@@ -1,6 +1,7 @@
 package com.capgemini.candidateorganizationsystem.entities;
 
 
+import lombok.Builder;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 
 
 @Entity(name = "users")
+@Builder
 public class UserEntity implements Serializable {
 
     @Id
@@ -33,6 +35,28 @@ public class UserEntity implements Serializable {
 
     @OneToMany(mappedBy = "user")
     private List<CandidateEntity> candidates;
+
+
+    public UserEntity() {
+    }
+
+    public UserEntity(long id, String firstName, String lastName, String email, String encryptedPassword) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.encryptedPassword = encryptedPassword;
+    }
+
+    public UserEntity(long id, String firstName, String lastName, String email, String encryptedPassword, Date createdDate, List<CandidateEntity> candidates) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.encryptedPassword = encryptedPassword;
+        this.createdDate = createdDate;
+        this.candidates = candidates;
+    }
 
     public Date getCreatedDate() {
         return createdDate;

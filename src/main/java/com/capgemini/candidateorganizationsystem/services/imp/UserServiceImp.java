@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -39,6 +40,14 @@ public class UserServiceImp implements UserService {
         BeanUtils.copyProperties(userEntity, userDto);
 
         return userDto;
+    }
+
+    @Override
+    public List<UserEntity> getUsers() {
+
+        List<UserEntity>  users = userRepository.findAll();
+
+        return users;
     }
 
     @Override
