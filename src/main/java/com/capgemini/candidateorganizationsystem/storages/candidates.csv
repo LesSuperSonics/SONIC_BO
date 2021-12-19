@@ -1,5 +1,5 @@
 ﻿id,cin,passportId,firstName,lastName,phoneNumber,email,address,expDuration,profile,receivedDate
-1,AD165121,Z542162,Younes,OUFRID,6413458530,oufridyounes@gmail.com,Appt 233 Imm 20 Temara Maroc,12,FullStack,16/10/2021
-2,AD548741,,Ilyas,AGRAOU,6879874530,ilyasagraou@gmail.com, 45 avenue Med 5 Rabat Maroc,12,FullStack,16/10/2020
-3,AD879651,,Zakaria,CHAFIK,6216318530,zakariachafik@gmail.com,51 Guich el oudaya Temara Maroc,24,Testing,10/9/2019
-4,AT819632,Z542162,Salah-Eddine,HALKHOUMS,6415968530,salaheddinehalkhoums@gmail.com,Appt 233 Imm 20 Salé el jadida Maroc,12,SalesForce,16/10/2021
+1,AD165121,Z542162,Younes,OUFRID,06413458530,oufridyounes@gmail.com,Appt 233 Imm 20 Temara Maroc,12,FullStack,16/10/2021
+2,AD548741,,Ilyas,AGRAOU,06879874530,ilyasagraou@gmail.com, 45 avenue Med 5 Rabat Maroc,12,FullStack,16/10/2018
+3,AD879651,,Zakaria,CHAFIK,06216318530,zakariachafik@gmail.com,51 Guich el oudaya Temara Maroc,24,Testing,10/9/2017
+4,AT819632,Z542162,Salah-Eddine,HALKHOUMS,06415968530,salaheddinehalkhoums@gmail.com,Appt 233 Imm 20 Salé el jadida Maroc,12,SalesForce,16/10/2016
