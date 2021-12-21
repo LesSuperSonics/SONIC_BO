@@ -1,0 +1,4 @@
+﻿id,cin,passportId,firstName,lastName,phoneNumber,email,address,expDuration,profile,receivedDate
+1,AD087654,Z243454,brahim,brahim,06413498474,brahimbrahim@gmail.com,Appt 233 Imm 20 Temara Maroc,2,FullStack,16/10/2021
+2,AD234575,,hayat,hayat,06879846586,hayathayat@gmail.com, 45 avenue Med 5 Rabat Maroc,3,FullStack,16/10/2018
+3,AD984723,,zaynab,zaynab,06216318464,zaynabzaynab@gmail.com,51 Guich el oudaya Temara Maroc,1,Testing,10/9/2017
